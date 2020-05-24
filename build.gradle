@@ -37,7 +37,7 @@ group = 'RebornCore'
 
 def ENV = System.getenv()
 def build_number = ENV.BUILD_NUMBER ?: "local"
-version = "${version}+build.$build_number"
+version = "${version}_pdev.$build_number"
 
 license {
 	header file('HEADER')
