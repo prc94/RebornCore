@@ -99,7 +99,7 @@ publishing {
 	}
 
 	repositories {
-		maven {
+		/*maven {
 			url "http://mavenupload.modmuss50.me/"
 			if (project.hasProperty('mavenPass')) {
 				credentials {
@@ -107,13 +107,13 @@ publishing {
 					password project.getProperty('mavenPass')
 				}
 			}
-		}
+		}*/
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/prc94/RebornCore")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
 	}
