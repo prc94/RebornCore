@@ -103,12 +103,6 @@ public abstract class RebornFluid extends BaseFluid {
 	}
 
 	@Override
-	protected boolean method_15777(FluidState fluidState, BlockView blockView, BlockPos blockPos, Fluid fluid, Direction direction) {
-		//TODO wat is this?
-		return false;
-	}
-
-	@Override
 	public boolean matchesType(Fluid fluid) {
 		return getFlowing() == fluid || getStill() == fluid;
 	}
