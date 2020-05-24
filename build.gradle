@@ -37,8 +37,12 @@ group = 'RebornCore'
 
 def ENV = System.getenv()
 def build_time = new Date().format("yyyyMMdd'-'hhmm")
-def build_number = ENV.BUILD_NUMBER ?: "$build_time-dev"
+def build_number = ENV.BUILD_NUMBER ?: "local-$build_time-dev"
 version = "${version}+build.$build_number"
+
+minecraft {
+    remapMod = false
+}
 
 license {
 	header file('HEADER')
