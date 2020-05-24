@@ -36,7 +36,8 @@ version = "4.2.9"
 group = 'RebornCore'
 
 def ENV = System.getenv()
-def build_number = ENV.BUILD_NUMBER ?: "local"
+def build_time = new Date().format("yyyy-MM-dd'T'hh-mm")
+def build_number = ENV.BUILD_NUMBER ?: "local_p$build_time"
 version = "${version}+build.$build_number"
 
 license {
@@ -88,11 +89,11 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			// add all the jars that should be included when publishing to maven
-			artifact(remapJar) {
-				builtBy remapJar
+			artifact(jar) {
+				builtBy jar
 			}
 			artifact(sourcesJar) {
-				builtBy remapSourcesJar
+				builtBy sourcesJar
 			}
 		}
 	}
@@ -107,6 +108,14 @@ publishing {
 				}
 			}
 		}
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/prc94/RebornCore")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
 	}
 }
 
