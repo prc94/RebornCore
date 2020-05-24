@@ -103,6 +103,11 @@ public abstract class RebornFluid extends BaseFluid {
 	}
 
 	@Override
+	protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
+		return false;
+	}
+
+	@Override
 	public boolean matchesType(Fluid fluid) {
 		return getFlowing() == fluid || getStill() == fluid;
 	}
