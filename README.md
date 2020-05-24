@@ -2,3 +2,6 @@
 
 # RebornCore
 Reborn core is libary mod used by a large range of other mods.
+
+# About this fork
+This fork configured to publish unremapped jar files to it's associated GitHub Packages Repository
