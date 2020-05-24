@@ -36,9 +36,9 @@ version = "4.2.9"
 group = 'RebornCore'
 
 def ENV = System.getenv()
-def build_time = new Date().format("yyyyMMdd'T'hhmm")
-def build_number = ENV.BUILD_NUMBER ?: "prc$build_time"
-version = "${version}_depfix.$build_number"
+def build_time = new Date().format("yyyyMMdd'-'hhmm")
+def build_number = ENV.BUILD_NUMBER ?: "$build_time-dev"
+version = "${version}+build.$build_number"
 
 license {
 	header file('HEADER')
